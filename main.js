@@ -97,10 +97,29 @@ function saveNotes() {
 
 /* 불러오기 */
 function load() {
-  const saved = JSON.parse(localStorage.getItem("memo_moodboard_data") || "[]");
+  // 1. 기존 키 'data'와 새 키 'memo_moodboard_data'를 모두 확인
+  const legacyData = localStorage.getItem("data");
+  const newData = localStorage.getItem("memo_moodboard_data");
+  
+  let saved = [];
+  
+  if (legacyData) {
+    try {
+      saved = JSON.parse(legacyData);
+      // 레거시 데이터를 새 키로 마이그레이션
+      localStorage.setItem("memo_moodboard_data", legacyData);
+      // 안전하게 기존 키는 삭제 (중복 방지)
+      localStorage.removeItem("data");
+      console.log("기존 메모 데이터를 성공적으로 복구했습니다.");
+    } catch (e) {
+      console.error("데이터 복구 중 오류 발생:", e);
+    }
+  } else if (newData) {
+    saved = JSON.parse(newData);
+  }
 
   if (saved.length === 0) {
-    // 저장된 데이터가 없을 때 초기 샘플 메모 생성
+    // 저장된 데이터가 전혀 없을 때만 샘플 메모 생성
     addNote("여기에 메모를 작성해 보세요!", "100px", "100px");
   } else {
     saved.forEach(item => {
