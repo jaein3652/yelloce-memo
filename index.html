@@ -7,8 +7,29 @@
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
+  <div class="container">
+    <h1>제휴 문의</h1>
+    <p>아래 폼을 작성해 주시면 확인 후 연락드리겠습니다.</p>
+    
+    <form action="https://formspree.io/f/mvzvjkrp" method="POST" id="contact-form">
+      <div class="form-group">
+        <label for="name">성함/업체명</label>
+        <input type="text" id="name" name="name" required placeholder="홍길동 / (주)옐로스">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">이메일 주소</label>
+        <input type="email" id="email" name="_replyto" required placeholder="example@email.com">
+      </div>
+      
+      <div class="form-group">
+        <label for="message">문의 내용</label>
+        <textarea id="message" name="message" rows="5" required placeholder="문의하실 내용을 입력해주세요."></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">문의하기</button>
+    </form>
+  </div>
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>
