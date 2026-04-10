@@ -4,8 +4,9 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start; /* Change from center to allow scrolling */
+  min-height: 100vh;
+  padding: 2rem 0;
   color: #333;
 }
 
@@ -14,8 +15,8 @@ body {
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 450px;
+  width: 90%;
+  max-width: 600px; /* Increased max-width for comments */
 }
 
 h1 {
@@ -76,4 +77,9 @@ textarea:focus {
 
 .submit-btn:hover {
   background-color: #2980b9;
+}
+
+#disqus_thread {
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
 }
