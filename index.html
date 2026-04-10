@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>메모 + 무드보드 (연결형)</title>
   <meta name="google-adsense-account" content="ca-pub-2923239501866689">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2923239501866689" crossorigin="anonymous"></script>
   <!-- Google tag (gtag.js) -->
@@ -12,55 +12,51 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-BBCYP4BBRY');
   </script>
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <div class="container">
-    <h1>제휴 문의</h1>
-    <p>아래 폼을 작성해 주시면 확인 후 연락드리겠습니다.</p>
-    
+
+<div id="left">
+  <button class="action-btn" onclick="addNote()">+ 메모 추가</button>
+  <div id="notes"></div>
+
+  <!-- Footer Section: Contact & Comments -->
+  <div class="footer-content">
+    <h3>제휴 문의</h3>
     <form action="https://formspree.io/f/mvzvjkrp" method="POST" id="contact-form">
       <div class="form-group">
         <label for="name">성함/업체명</label>
         <input type="text" id="name" name="name" required placeholder="홍길동 / (주)옐로스">
       </div>
-      
       <div class="form-group">
-        <label for="email">이메일 주소</label>
+        <label for="email">이메일</label>
         <input type="email" id="email" name="_replyto" required placeholder="example@email.com">
       </div>
-      
       <div class="form-group">
         <label for="message">문의 내용</label>
-        <textarea id="message" name="message" rows="5" required placeholder="문의하실 내용을 입력해주세요."></textarea>
+        <textarea id="message" name="message" rows="3" required placeholder="내용을 입력해주세요."></textarea>
       </div>
-      
       <button type="submit" class="submit-btn">문의하기</button>
     </form>
 
-    <div id="disqus_thread" style="margin-top: 3rem;"></div>
+    <div id="disqus_thread"></div>
     <script>
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
-        (function() { // DON'T EDIT BELOW THIS LINE
+        (function() {
         var d = document, s = d.createElement('script');
         s.src = 'https://yelloce-memo.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
         })();
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  <script defer type="text/javascript" src="/main.js"></script>
+</div>
+
+<div id="resizer"></div>
+
+<div id="right"></div>
+
+<script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>
